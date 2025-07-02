@@ -1,10 +1,11 @@
- :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #2c3e50;
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+/* 藍色系配色變數 */
+:root {
+    --primary-blue: #3498db; /* 主要藍色 */
+    --secondary-blue: #87ceeb; /* 次要藍色 (天空藍) */
+    --light-blue: #e0f2f7; /* 最淺的藍色 */
+    --deep-blue: #2c3e50; /* 深藍色，用於強調 */
+    --gradient-blue: linear-gradient(135deg, #3498db 0%, #2980b9 50%, #1a5276 100%); /* 漸層藍色 */
+}
 
         * {
             margin: 0;
