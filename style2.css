@@ -1,13 +1,14 @@
-/* style3.css - 藍色系配色 */
+/* style3.css - 藍色系配色 (以 #446CB3 為主) */
 
 /* 藍色系配色變數 */
 :root {
-    --primary-blue: #2196f3; /* 主要藍色：用於強調元素、主要按鈕、連結 */
-    --secondary-blue: #64b5f6; /* 次要藍色：比主色淺，用於 hover 效果、背景點綴 */
-    --light-blue: #e3f2fd; /* 最淺藍色：用於頁面背景、淺色區塊背景 */
-    --deep-blue: #1565c0; /* 深藍色：用於標題、重要文本、頁腳背景 */
-    --gradient-blue: linear-gradient(135deg, #2196f3 0%, #42a5f5 50%, #64b5f6 100%); /* 漸層藍色 */
-    --blue-shadow: rgba(33, 150, 243, 0.3); /* 藍色陰影：用於卡片、按鈕的陰影效果 */
+    --primary-blue: #446CB3; /* 主要藍色：IBM logo 的藍色 */
+    --secondary-blue: #6A92D2; /* 次要藍色：比主色略淺、用於 hover 和點綴 */
+    --light-blue: #EBF2FA; /* 最淺藍色：頁面背景、淺色區塊 */
+    --deep-blue: #2A4880; /* 深藍色：標題、重要文本、頁腳 */
+    --gradient-blue: linear-gradient(135deg, #446CB3 0%, #5A83C8 50%, #6A92D2 100%); /* 漸層藍色 */
+    --blue-shadow: rgba(68, 108, 179, 0.3); /* 藍色陰影：基於主藍色的透明度 */
+    --text-color: #333; /* 文本顏色保持深灰色，高可讀性 */
 }
 
 * {
@@ -19,13 +20,13 @@
 body {
     font-family: 'Microsoft JhengHei', Arial, sans-serif;
     line-height: 1.6;
-    color: #333; /* 保持深灰色文本，高可讀性 */
+    color: var(--text-color); /* 保持深灰色文本，高可讀性 */
     background: var(--light-blue); /* 粉紅色系變數名稱已更改為藍色系 */
 }
 
 /* Navigation */
 .navbar {
-    background: rgba(33, 150, 243, 0.95) !important; /* 粉紅色 rgba 調整為藍色 rgba */
+    background: rgba(68, 108, 179, 0.95) !important; /* 粉紅色 rgba 調整為藍色 rgba */
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px var(--blue-shadow); /* 粉紅色陰影調整為藍色陰影變數 */
     transition: all 0.3s ease;
@@ -123,21 +124,21 @@ body {
 }
 
 .bg-light {
-    background: var(--secondary-blue) !important; /* 粉紅色系變數名稱已更改為藍色系 */
+    background: var(--light-blue) !important; /* 粉紅色系變數名稱已更改為藍色系 */
 }
 
 /* Cards */
 .card {
     border: none;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(33, 150, 243, 0.2); /* 粉紅色 rgba 調整為藍色 rgba */
+    box-shadow: 0 10px 30px rgba(68, 108, 179, 0.2); /* 粉紅色 rgba 調整為藍色 rgba */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: white;
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(33, 150, 243, 0.3); /* 粉紅色 rgba 調整為藍色 rgba */
+    box-shadow: 0 20px 40px rgba(68, 108, 179, 0.3); /* 粉紅色 rgba 調整為藍色 rgba */
 }
 
 /* Filter Buttons */
@@ -162,7 +163,7 @@ body {
     background: var(--primary-blue); /* 粉紅色系變數名稱已更改為藍色系 */
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4); /* 粉紅色 rgba 調整為藍色 rgba */
+    box-shadow: 0 5px 15px rgba(68, 108, 179, 0.4); /* 粉紅色 rgba 調整為藍色 rgba */
 }
 
 /* Project Grid */
@@ -177,7 +178,7 @@ body {
     background: white;
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(33, 150, 243, 0.15); /* 粉紅色 rgba 調整為藍色 rgba */
+    box-shadow: 0 5px 20px rgba(68, 108, 179, 0.15); /* 粉紅色 rgba 調整為藍色 rgba */
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
@@ -196,7 +197,7 @@ body {
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(33, 150, 243, 0.25); /* 粉紅色 rgba 調整為藍色 rgba */
+    box-shadow: 0 15px 35px rgba(68, 108, 179, 0.25); /* 粉紅色 rgba 調整為藍色 rgba */
 }
 
 .project-number {
@@ -223,7 +224,7 @@ body {
     background: white;
     padding: 3rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(33, 150, 243, 0.2); /* 粉紅色 rgba 調整為藍色 rgba */
+    box-shadow: 0 10px 30px rgba(68, 108, 179, 0.2); /* 粉紅色 rgba 調整為藍色 rgba */
 }
 
 .contact-item {
