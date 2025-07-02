@@ -1,10 +1,10 @@
 :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #2c3e50;
-            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
+    --primary-color: #2c3e50; /* 主色：深海藍 (文字、主要標題) */
+    --secondary-color: #3498db; /* 次要色：經典藍 (連結 hover, 線條, 次要強調) */
+    --accent-color: #5dade2; /* 強調色：更亮一點的藍 (按鈕背景) */
+    --text-color: #2c3e50; /* 文字顏色：深海藍 */
+    --bg-gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); /* 背景漸層：從深海藍到經典藍 */
+}
 
         * {
             margin: 0;
