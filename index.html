@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -43,6 +43,15 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content fade-in">
+                    .fade-in {
+                        opacity: 0;
+                        transform: translateY(30px) scale(0.9); /* 初始位置向下30px且縮小90% */
+                        transition: all 0.6s ease-out;
+                        }
+                    .fade-in.visible {
+                        opacity: 1;
+                        transform: translateY(0) scale(1); /* 恢復原位且恢復原大小 */
+                        }
                     <h1 id="name"></h1>
                     <p class="subtitle" id="title"></p>
                     <div class="mb-3">
@@ -146,7 +155,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Dr. Pin Luarn. 版權所有。</p>
+            <p>&copy; 2025 Danio Hsieh 版權所有。</p>
         </div>
     </footer>
 
