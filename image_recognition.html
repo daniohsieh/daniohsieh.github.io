@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 影像辨識系統</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #7093D1 0%, #2A467D 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            min-height: 600px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2A467D;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .toggle-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #34495e;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #bdc3c7, #95a5a6);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 24px;
+            width: 24px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        input:checked + .slider {
+            background: #DB5C4C;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .webcam-section {
+            text-align: center;
+        }
+
+        .webcam-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .webcam-container {
+            position: relative;
+            display: inline-block;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background: #f8f9fa;
+            min-height: 300px;
+            min-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .webcam-container canvas {
+            width: 100% !important;
+            height: auto !important;
+            border-radius: 15px;
+        }
+
+        .webcam-placeholder {
+            color: #95a5a6;
+            font-size: 16px;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .results-section {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .top-result {
+            background: linear-gradient(135deg, #446CB3, #2E5A9B);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(68, 108, 179, 0.3);
+        }
+
+        .top-result h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .top-result .object-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #FFD700;
+        }
+
+        .top-result .confidence {
+            font-size: 32px;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            color: #FFD700;
+        }
+
+        .predictions-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .prediction-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .prediction-item:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(5px);
+        }
+
+        .prediction-label {
+            font-weight: 500;
+            color: #2c3e50;
+            min-width: 80px;
+            font-size: 14px;
+        }
+
+        .prediction-bar-container {
+            flex: 1;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 10px;
+            position: relative;
+        }
+
+        .prediction-bar {
+            height: 100%;
+            transition: all 0.6s ease;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .prediction-bar.highest {
+            background: linear-gradient(90deg, #27ae60, #229954);
+            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.4);
+        }
+
+        .prediction-bar.second {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            box-shadow: 0 2px 8px rgba(243, 156, 18, 0.4);
+        }
+
+        .prediction-bar.others {
+            background: linear-gradient(90deg, #95a5a6, #7f8c8d);
+        }
+
+        .prediction-percentage {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 45px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+            background: #e74c3c;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.active {
+            background: #27ae60;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #446CB3;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">AI 影像辨識系統</h1>
+            <p class="subtitle">Teachable Machine 深度學習模型</p>
+        </div>
+
+        <div class="toggle-container">
+            <span class="toggle-label">辨識功能</span>
+            <div class="status-indicator" id="status-indicator"></div>
+            <label class="toggle-switch">
+                <input type="checkbox" id="recognition-toggle" onchange="toggleRecognition()">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="main-content">
+            <div class="webcam-section">
+                <h2 class="webcam-title">即時影像</h2>
+                <div class="webcam-container" id="webcam-container">
+                    <div class="webcam-placeholder">
+                        <p>請開啟辨識功能以啟動攝影機</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="top-result" id="top-result" style="display: none;">
+                    <h3>最高辨識結果</h3>
+                    <div class="object-name" id="top-object">-</div>
+                    <div class="confidence" id="top-confidence">0%</div>
+                </div>
+
+                <div class="predictions-title">辨識結果</div>
+                <div id="predictions-container">
+                    <div class="prediction-item">
+                        <span class="prediction-label">等待中...</span>
+                        <div class="prediction-bar-container">
+                            <div class="prediction-bar others" style="width: 0%"></div>
+                        </div>
+                        <span class="prediction-percentage">0%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/xF7nvQd0d/";
+        let model, webcam, maxPredictions;
+        let isRecognitionActive = false;
+        let isLoading = false;
+
+        const statusIndicator = document.getElementById('status-indicator');
+        const topResult = document.getElementById('top-result');
+        const topObject = document.getElementById('top-object');
+        const topConfidence = document.getElementById('top-confidence');
+        const predictionsContainer = document.getElementById('predictions-container');
+
+        async function toggleRecognition() {
+            const toggle = document.getElementById('recognition-toggle');
+            
+            if (toggle.checked && !isRecognitionActive) {
+                await startRecognition();
+            } else if (!toggle.checked && isRecognitionActive) {
+                stopRecognition();
+            }
+        }
+
+        async function startRecognition() {
+            if (isLoading) return;
+            
+            isLoading = true;
+            statusIndicator.classList.remove('active');
+            
+            // 顯示載入狀態
+            const webcamContainer = document.getElementById("webcam-container");
+            webcamContainer.innerHTML = '<div class="loading-spinner"></div><p>載入模型中...</p>';
+            
+            try {
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+                
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+                
+                const flip = true;
+                webcam = new tmImage.Webcam(400, 400, flip);
+                await webcam.setup();
+                await webcam.play();
+                
+                webcamContainer.innerHTML = '';
+                webcamContainer.appendChild(webcam.canvas);
+                
+                isRecognitionActive = true;
+                statusIndicator.classList.add('active');
+                topResult.style.display = 'block';
+                
+                // 初始化預測結果顯示
+                initializePredictionDisplay();
+                
+                requestAnimationFrame(loop);
+                
+            } catch (error) {
+                console.error('啟動失敗:', error);
+                alert('啟動攝影機失敗，請檢查權限設定');
+                document.getElementById('recognition-toggle').checked = false;
+                webcamContainer.innerHTML = '<div class="webcam-placeholder"><p>啟動失敗，請重試</p></div>';
+            }
+            
+            isLoading = false;
+        }
+
+        function stopRecognition() {
+            if (webcam) {
+                webcam.stop();
+            }
+            
+            isRecognitionActive = false;
+            statusIndicator.classList.remove('active');
+            topResult.style.display = 'none';
+            
+            const webcamContainer = document.getElementById("webcam-container");
+            webcamContainer.innerHTML = '<div class="webcam-placeholder"><p>請開啟辨識功能以啟動攝影機</p></div>';
+            
+            // 重置預測結果
+            resetPredictionDisplay();
+        }
+
+        function initializePredictionDisplay() {
+            predictionsContainer.innerHTML = '';
+            for (let i = 0; i < maxPredictions; i++) {
+                const predictionItem = document.createElement('div');
+                predictionItem.className = 'prediction-item';
+                predictionItem.innerHTML = `
+                    <span class="prediction-label">類別 ${i + 1}</span>
+                    <div class="prediction-bar-container">
+                        <div class="prediction-bar others" style="width: 0%"></div>
+                    </div>
+                    <span class="prediction-percentage">0%</span>
+                `;
+                predictionsContainer.appendChild(predictionItem);
+            }
+        }
+
+        function resetPredictionDisplay() {
+            predictionsContainer.innerHTML = `
+                <div class="prediction-item">
+                    <span class="prediction-label">等待中...</span>
+                    <div class="prediction-bar-container">
+                        <div class="prediction-bar others" style="width: 0%"></div>
+                    </div>
+                    <span class="prediction-percentage">0%</span>
+                </div>
+            `;
+        }
+
+        async function loop() {
+            if (!isRecognitionActive) return;
+            
+            webcam.update();
+            await predict();
+            requestAnimationFrame(loop);
+        }
+
+        async function predict() {
+            if (!model || !webcam) return;
+            
+            const prediction = await model.predict(webcam.canvas);
+            
+            // 按機率排序
+            const sortedPredictions = prediction.slice().sort((a, b) => b.probability - a.probability);
+            
+            // 更新最高結果
+            const topPrediction = sortedPredictions[0];
+            topObject.textContent = topPrediction.className;
+            topConfidence.textContent = (topPrediction.probability * 100).toFixed(1) + '%';
+            
+            // 更新所有預測結果
+            const predictionItems = predictionsContainer.querySelectorAll('.prediction-item');
+            
+            sortedPredictions.forEach((pred, index) => {
+                if (index < predictionItems.length) {
+                    const item = predictionItems[index];
+                    const label = item.querySelector('.prediction-label');
+                    const bar = item.querySelector('.prediction-bar');
+                    const percentage = item.querySelector('.prediction-percentage');
+                    
+                    const percent = (pred.probability * 100).toFixed(1);
+                    
+                    label.textContent = pred.className;
+                    bar.style.width = percent + '%';
+                    percentage.textContent = percent + '%';
+                    
+                    // 設定顏色
+                    bar.className = 'prediction-bar';
+                    if (index === 0) {
+                        bar.classList.add('highest');
+                    } else if (index === 1) {
+                        bar.classList.add('second');
+                    } else {
+                        bar.classList.add('others');
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
