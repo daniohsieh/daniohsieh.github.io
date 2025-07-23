@@ -16,6 +16,7 @@
             background: linear-gradient(135deg, #7093D1 0%, #2A467D 100%);
             min-height: 100vh;
             display: flex;
+            flex-direction: column; /* 將主軸方向改為垂直，以便按鈕在底部 */
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -30,6 +31,7 @@
             max-width: 800px;
             width: 100%;
             min-height: 600px;
+            margin-bottom: 20px; /* 為按鈕留出一些空間 */
         }
 
         .header {
@@ -293,6 +295,35 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* 新增的返回首頁按鈕樣式 */
+        .home-button-container {
+            margin-top: 30px; /* 在按鈕上方留出空間 */
+            text-align: center;
+            width: 100%;
+        }
+
+        .home-button {
+            background: linear-gradient(90deg, #7093D1, #2A467D);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none; /* 如果使用<a>標籤，移除下劃線 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: inline-block; /* 確保按鈕能夠居中 */
+        }
+
+        .home-button:hover {
+            background: linear-gradient(90deg, #2A467D, #7093D1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -350,6 +381,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="home-button-container">
+        <a href="index.html" class="home-button">返回網站首頁</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
