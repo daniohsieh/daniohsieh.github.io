@@ -30,7 +30,7 @@ class ChatBot {
     }
     
     createChatBotUI() {
-        // 創建 CSS 樣式
+        // 創建 CSS 樣式 - 調整為 #2A4880 藍色主題
         const style = document.createElement('style');
         style.textContent = `
             .chatbot-widget {
@@ -43,11 +43,11 @@ class ChatBot {
             .chatbot-toggle {
                 width: 60px;
                 height: 60px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #2A4880 0%, #1e3461 100%);
                 border: none;
                 border-radius: 50%;
                 cursor: pointer;
-                box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+                box-shadow: 0 4px 20px rgba(42, 72, 128, 0.4);
                 transition: all 0.3s ease;
                 color: white;
                 font-size: 24px;
@@ -59,22 +59,23 @@ class ChatBot {
 
             .chatbot-toggle:hover {
                 transform: scale(1.1);
-                box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+                box-shadow: 0 6px 25px rgba(42, 72, 128, 0.5);
+                background: linear-gradient(135deg, #3454a4 0%, #2A4880 100%);
             }
 
             .chatbot-panel {
                 position: absolute;
                 bottom: 80px;
                 right: 0;
-                width: 350px;
-                height: 500px;
+                width: 280px;
+                height: 400px;
                 background: white;
                 border-radius: 15px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.2);
                 display: none;
                 flex-direction: column;
                 overflow: hidden;
-                border: 1px solid rgba(102, 126, 234, 0.1);
+                border: 1px solid rgba(42, 72, 128, 0.15);
             }
 
             .chatbot-panel.active {
@@ -94,7 +95,7 @@ class ChatBot {
             }
 
             .chatbot-header {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #2A4880 0%, #1e3461 100%);
                 color: white;
                 padding: 15px;
                 display: flex;
@@ -158,7 +159,7 @@ class ChatBot {
             }
 
             .message.user {
-                background: linear-gradient(135deg, #667eea, #764ba2);
+                background: linear-gradient(135deg, #2A4880, #1e3461);
                 color: white;
                 align-self: flex-end;
                 border-bottom-right-radius: 4px;
@@ -173,7 +174,7 @@ class ChatBot {
             }
 
             .message.system {
-                background: #28a745;
+                background: #2A4880;
                 color: white;
                 align-self: center;
                 font-size: 12px;
@@ -208,7 +209,7 @@ class ChatBot {
             .typing-dot {
                 width: 6px;
                 height: 6px;
-                background: #999;
+                background: #2A4880;
                 border-radius: 50%;
                 animation: typing 1.4s infinite;
             }
@@ -251,23 +252,26 @@ class ChatBot {
             }
 
             .input-field:focus {
-                border-color: #667eea;
+                border-color: #2A4880;
+                box-shadow: 0 0 0 3px rgba(42, 72, 128, 0.1);
             }
 
             .send-button {
                 padding: 10px 15px;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #2A4880 0%, #1e3461 100%);
                 color: white;
                 border: none;
                 border-radius: 20px;
                 cursor: pointer;
                 font-size: 14px;
                 font-weight: bold;
-                transition: transform 0.2s;
+                transition: all 0.2s;
             }
 
             .send-button:hover:not(:disabled) {
                 transform: scale(1.05);
+                background: linear-gradient(135deg, #3454a4 0%, #2A4880 100%);
+                box-shadow: 0 2px 8px rgba(42, 72, 128, 0.3);
             }
 
             .send-button:disabled {
@@ -294,16 +298,25 @@ class ChatBot {
             }
 
             @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.1); }
-                100% { transform: scale(1); }
+                0% { 
+                    transform: scale(1); 
+                    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+                }
+                50% { 
+                    transform: scale(1.1); 
+                    box-shadow: 0 0 0 5px rgba(220, 53, 69, 0);
+                }
+                100% { 
+                    transform: scale(1); 
+                    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+                }
             }
 
             /* 響應式設計 */
             @media (max-width: 768px) {
                 .chatbot-panel {
-                    width: 320px;
-                    height: 450px;
+                    width: 260px;
+                    height: 380px;
                     bottom: 70px;
                 }
             }
@@ -322,7 +335,7 @@ class ChatBot {
                 
                 .chatbot-panel {
                     width: calc(100vw - 30px);
-                    height: 70vh;
+                    height: 60vh;
                     bottom: 75px;
                     right: -15px;
                 }
@@ -337,12 +350,12 @@ class ChatBot {
             }
 
             .chat-messages::-webkit-scrollbar-thumb {
-                background: #c1c1c1;
+                background: rgba(42, 72, 128, 0.3);
                 border-radius: 2px;
             }
 
             .chat-messages::-webkit-scrollbar-thumb:hover {
-                background: #a8a8a8;
+                background: rgba(42, 72, 128, 0.5);
             }
         `;
         document.head.appendChild(style);
@@ -365,7 +378,7 @@ class ChatBot {
                     
                     <div class="chat-messages" id="chatMessages">
                         <div class="message system">
-                            歡迎使用 AI 助教！我可以回答您關於欒斌教授或AI課程的任何問題。
+                            歡迎使用 AI 助教！你可以問我任何問題。
                         </div>
                     </div>
                     
@@ -583,7 +596,7 @@ class ChatBot {
         if (recentHistory.length === 0) {
             // 如果沒有歷史記錄，顯示歡迎訊息
             setTimeout(() => {
-                this.addMessage('你好，我是AI助教v4！有什麼關於欒斌教授或AI課程的問題想要問我嗎？', 'ai');
+                this.addMessage('你好，我是AI助教v4！不管甚麼鬼問題都可以問我', 'ai');
             }, 1000);
         }
     }
