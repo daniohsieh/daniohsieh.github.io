@@ -370,7 +370,7 @@ class ChatBot {
                 
                 <div class="chatbot-panel" id="chatbotPanel">
                     <div class="chatbot-header">
-                        <div class="chatbot-title">🤖 AI 助教 v4</div>
+                        <div class="chatbot-title">🤖 AI 助教 v5_learning.n8n</div>
                         <button class="chatbot-close" id="chatbotClose">
                             <i class="fas fa-times"></i>
                         </button>
@@ -596,7 +596,7 @@ class ChatBot {
         if (recentHistory.length === 0) {
             // 如果沒有歷史記錄，顯示歡迎訊息
             setTimeout(() => {
-                this.addMessage('你好，我是AI助教v4！不管甚麼鬼問題都可以問我', 'ai');
+                this.addMessage('你好，我是AI助教v5！不管甚麼鬼問題都可以問我', 'ai');
             }, 1000);
         }
     }
