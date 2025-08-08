@@ -370,7 +370,7 @@ class ChatBot {
                 
                 <div class="chatbot-panel" id="chatbotPanel">
                     <div class="chatbot-header">
-                        <div class="chatbot-title">🤖 AI 助教 v5_learning.n8n</div>
+                        <div class="chatbot-title">🤖 AI 助教 v5_虎智</div>
                         <button class="chatbot-close" id="chatbotClose">
                             <i class="fas fa-times"></i>
                         </button>
