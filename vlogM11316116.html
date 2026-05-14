@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台灣味之魂：蚵仔麵線專題報告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            clay: '#B85C38',
+                            dark: '#1A1A1A',
+                            paper: '#F9F7F2',
+                            red: '#E63946'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Noto Serif TC', 'serif'],
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F9F7F2;
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #B85C38 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #B85C38;
+            border-radius: 10px;
+        }
+        .audio-player {
+            filter: sepia(0.2) hue-rotate(-15deg);
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-dark overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <header class="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-brand-dark">
+        <div class="absolute inset-0 opacity-40">
+             <img src="https://opal.google/board/blobs/486128b4-b305-4f29-b569-382cbbc4d31b" alt="Banner background" class="w-full h-full object-cover scale-110">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-brand-dark/50"></div>
+        
+        <div class="relative z-10 text-center px-4 animate-fade-in-up">
+            <span class="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-widest text-brand-gold uppercase border border-brand-gold/50 rounded-full bg-brand-gold/10">
+                Taiwanese Gastronomy
+            </span>
+            <h1 class="text-5xl md:text-8xl font-display font-black text-white mb-6 drop-shadow-2xl">
+                蚵仔麵線 <span class="text-brand-clay block md:inline text-3xl md:text-5xl">專題報告</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-gray-300 text-lg md:text-xl font-light leading-relaxed">
+                從農忙共食到國民美食：一碗承載台灣靈魂的紅麵線故事
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-24 space-y-32">
+
+        <!-- 1. Infographics Section (Top) -->
+        <section id="infographics" class="space-y-12">
+            <div class="flex flex-col md:flex-row items-end justify-between border-b border-brand-clay/20 pb-6">
+                <div>
+                    <h2 class="text-3xl font-display font-bold text-brand-clay italic">01. 視覺化導覽</h2>
+                    <p class="text-gray-500 mt-2">核心要點一目了然</p>
+                </div>
+                <div class="hidden md:block text-right">
+                    <span class="text-sm font-semibold text-brand-gold">INFOGRAPHIC</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="media-container transform transition-transform hover:scale-[1.02] duration-500">
+                    <img src="https://opal.google/board/blobs/743f679d-c00e-45db-bfbb-bb75fba5cc3e" alt="Infographic Part 1">
+                </div>
+                <div class="media-container transform transition-transform hover:scale-[1.02] duration-500">
+                    <img src="https://opal.google/board/blobs/a1dc0b8f-3481-4c35-a3c3-088429c54d26" alt="Infographic Part 2">
+                </div>
+            </div>
+
+            <!-- Summary Chips -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mt-12">
+                <div class="glass-card p-4 rounded-2xl text-center border-t-4 border-brand-clay animate-float">
+                    <div class="text-2xl mb-2">🌾</div>
+                    <div class="text-sm font-bold">農忙起源</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center border-t-4 border-brand-gold animate-float" style="animation-delay: 1s">
+                    <div class="text-2xl mb-2">🦪</div>
+                    <div class="text-sm font-bold">三大核心</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center border-t-4 border-brand-clay animate-float" style="animation-delay: 2s">
+                    <div class="text-2xl mb-2">🥄</div>
+                    <div class="text-sm font-bold">工藝技術</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center border-t-4 border-brand-gold animate-float" style="animation-delay: 3s">
+                    <div class="text-2xl mb-2">📍</div>
+                    <div class="text-sm font-bold">南北差異</div>
+                </div>
+                <div class="glass-card p-4 rounded-2xl text-center border-t-4 border-brand-clay animate-float" style="animation-delay: 4s">
+                    <div class="text-2xl mb-2">🇹🇼</div>
+                    <div class="text-sm font-bold">文化地位</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Video Section (Middle) -->
+        <section id="video" class="relative py-20">
+            <div class="absolute inset-0 bg-brand-clay/5 -skew-y-3 rounded-[3rem]"></div>
+            <div class="relative z-10 text-center space-y-12">
+                <div class="max-w-2xl mx-auto px-4">
+                    <h2 class="text-3xl font-display font-bold text-brand-dark mb-4">影像紀錄與聲景</h2>
+                    <p class="text-gray-600">展示了從早期農村起源到鮮美食材，再到現代夜市文化的演變過程。</p>
+                </div>
+
+                <div class="max-w-4xl mx-auto px-4">
+                    <div class="media-container aspect-video overflow-hidden shadow-2xl ring-4 ring-white">
+                        <video controls class="w-full h-full object-cover">
+                            <source src="https://opal.google/board/blobs/beac343d-6f6d-4a6c-9f9c-f1efc2a87f40" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    
+                    <div class="mt-8 glass-card p-6 rounded-3xl flex flex-col md:flex-row items-center gap-6 max-w-2xl mx-auto border border-brand-gold/30">
+                        <div class="bg-brand-clay/20 p-4 rounded-full">
+                            <svg class="w-8 h-8 text-brand-clay" fill="currentColor" viewBox="0 0 20 20"><path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"></path></svg>
+                        </div>
+                        <div class="flex-grow text-left">
+                            <p class="text-sm font-bold text-brand-dark uppercase tracking-widest">背景音樂隨放</p>
+                            <audio controls src="https://opal.google/board/blobs/ec12bd57-24d1-425e-9a71-f738d34a7a4a" class="w-full mt-2 audio-player"></audio>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12">
+                     <div class="media-container">
+                        <img src="https://opal.google/board/blobs/486128b4-b305-4f29-b569-382cbbc4d31b" class="h-64 object-cover hover:scale-105 transition-transform duration-500">
+                     </div>
+                     <div class="media-container">
+                        <img src="https://opal.google/board/blobs/6a4640db-b866-41ce-9c5e-b594b5089486" class="h-64 object-cover hover:scale-105 transition-transform duration-500">
+                     </div>
+                     <div class="media-container">
+                        <img src="https://opal.google/board/blobs/e96085b1-9a47-44b7-b9d1-08eede726bfd" class="h-64 object-cover hover:scale-105 transition-transform duration-500">
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Report Section (Bottom) -->
+        <section id="report" class="space-y-16">
+            <div class="flex items-center gap-4">
+                <div class="h-1 bg-brand-clay flex-grow"></div>
+                <h2 class="text-4xl font-display font-black text-brand-dark px-4">研究報告內容</h2>
+                <div class="h-1 bg-brand-clay flex-grow"></div>
+            </div>
+
+            <!-- Bento Layout Summary -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 glass-card p-10 rounded-3xl border-l-8 border-brand-clay">
+                    <h3 class="text-2xl font-bold mb-6 text-brand-clay">摘要</h3>
+                    <ul class="space-y-4 text-gray-700 leading-relaxed">
+                        <li class="flex items-start gap-3"><span class="text-brand-gold font-bold">●</span> <strong>歷史溯源：</strong>源於早期農業社會，由清淡麵線糊演變為今日豐富小吃。</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-gold font-bold">●</span> <strong>食材特性：</strong>核心包含梅納反應後的紅麵線、裹粉珍珠蚵及滷大腸。</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-gold font-bold">●</span> <strong>工藝與科學：</strong>結合柴魚高湯熬製與澱粉勾芡，具備深厚食品科學內涵。</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-gold font-bold">●</span> <strong>地域多樣性：</strong>「北鹹香、南偏甜」，呈現豐富的地方特色差異。</li>
+                        <li class="flex items-start gap-3"><span class="text-brand-gold font-bold">●</span> <strong>文化價值：</strong>跨越階級的國民小吃，承載庶民記憶與飲食資產。</li>
+                    </ul>
+                </div>
+                <div class="bg-brand-dark text-white p-10 rounded-3xl flex flex-col justify-center">
+                    <p class="text-brand-gold font-display text-lg mb-2">學號資訊</p>
+                    <h4 class="text-4xl font-black mb-4">M11316116</h4>
+                    <p class="text-gray-400 text-sm italic">學術專題研究報告</p>
+                </div>
+            </div>
+
+            <!-- Detailed Content -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <aside class="md:col-span-4 space-y-6">
+                    <div class="sticky top-12 space-y-4">
+                        <nav class="flex flex-col gap-2">
+                            <a href="#sec-1" class="px-4 py-3 rounded-xl hover:bg-brand-clay/10 transition-colors font-semibold">一、歷史起源</a>
+                            <a href="#sec-2" class="px-4 py-3 rounded-xl hover:bg-brand-clay/10 transition-colors font-semibold">二、食材特性</a>
+                            <a href="#sec-3" class="px-4 py-3 rounded-xl hover:bg-brand-clay/10 transition-colors font-semibold">三、製作工藝</a>
+                            <a href="#sec-4" class="px-4 py-3 rounded-xl hover:bg-brand-clay/10 transition-colors font-semibold">四、地域差異</a>
+                            <a href="#sec-5" class="px-4 py-3 rounded-xl hover:bg-brand-clay/10 transition-colors font-semibold">五、文化地位</a>
+                        </nav>
+                        <div class="p-6 bg-brand-gold/10 rounded-3xl border border-brand-gold/20">
+                            <p class="text-sm italic text-brand-dark/70">「一碗麵線，承載了海洋、陸地與農村的精華。」</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <div class="md:col-span-8 space-y-12 text-lg leading-relaxed text-gray-800">
+                    <div id="sec-1" class="scroll-mt-12">
+                        <h3 class="text-2xl font-bold text-brand-clay border-b-2 border-brand-clay/10 pb-2 mb-4">一、 歷史起源</h3>
+                        <p>蚵仔麵線發源於台灣早期的農業社會。最初是農村婦女在農忙時期，為方便餵飽大量耕作人力，利用自家現有的手工麵線加上鄰近海邊易於取得的蚵仔，所煮成的大鍋羹湯。早期形式較接近清淡的「麵線糊」。隨著時代變遷、商業化發展以及戰後城市生活圈的轉移，才逐漸演變成今日加入大腸、柴魚高湯及勾芡的濃郁形式。這項小吃不僅體現了台灣早期「惜物」與「共食」的庶民精神。</p>
+                    </div>
+
+                    <div id="sec-2" class="scroll-mt-12">
+                        <h3 class="text-2xl font-bold text-brand-clay border-b-2 border-brand-clay/10 pb-2 mb-4">二、 食材特性</h3>
+                        <div class="space-y-4">
+                            <p><strong class="text-brand-dark">1. 紅麵線：</strong>經過長時間高溫蒸煮，澱粉發生梅納反應呈現紅褐色，使其具備耐煮、久煮不爛且口感Ｑ彈的優勢。</p>
+                            <p><strong class="text-brand-dark">2. 鮮蚵：</strong>多選用台灣在地（如東石、鹿港）的小型「珍珠蚵」。裹上地瓜粉或太白粉後汆燙，保持肥美並防止縮水。</p>
+                            <p><strong class="text-brand-dark">3. 滷大腸：</strong>經歷繁雜的清洗去腥程序，預先放入滷汁中滷透，增加咀嚼時的咬勁。</p>
+                        </div>
+                    </div>
+
+                    <div id="sec-3" class="scroll-mt-12">
+                        <h3 class="text-2xl font-bold text-brand-clay border-b-2 border-brand-clay/10 pb-2 mb-4">三、 製作工藝</h3>
+                        <p>高湯通常以柴魚片、蝦米與蔥頭酥熬製，定調風味。將紅麵線洗淨放入高湯中煮至軟爛適中，接著加入澱粉水勾芡。盛碗時依序鋪上配料，佐以蒜泥、烏醋、香菜或九層塔，完成風味的完美融合。</p>
+                    </div>
+
+                    <div id="sec-4" class="scroll-mt-12">
+                        <h3 class="text-2xl font-bold text-brand-clay border-b-2 border-brand-clay/10 pb-2 mb-4">四、 地域差異</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                                <h4 class="font-bold text-brand-clay mb-2">北部特色</h4>
+                                <p class="text-sm">偏重鹹香，柴魚風味濃。偏好加入滷大腸或肉羹。勾芡濃稠，多以香菜為主。</p>
+                            </div>
+                            <div class="p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+                                <h4 class="font-bold text-brand-clay mb-2">南部特色</h4>
+                                <p class="text-sm">口味偏甜，強調海鮮鮮甜。勾芡度較稀，麵線比例高，偶見使用九層塔提味。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sec-5" class="scroll-mt-12">
+                        <h3 class="text-2xl font-bold text-brand-clay border-b-2 border-brand-clay/10 pb-2 mb-4">五、 文化地位</h3>
+                        <p>被譽為「國民小吃」，是台灣典型的路邊攤文化象徵。它巧妙結合了海洋（蚵仔）、陸地（豬大腸）與農業（麵線）的物產精華，成為凝聚台灣人共同鄉愁與味覺記憶的重要媒介。</p>
+                    </div>
+
+                    <div class="p-8 bg-brand-clay text-white rounded-[2rem]">
+                        <h3 class="text-2xl font-bold mb-4">六、 簡要結論</h3>
+                        <p class="font-light">蚵仔麵線從早期農村果腹的簡樸羹湯，蛻變為風靡全台的國民美食，是台灣社會變遷與飲食文化融合的縮影。它不僅餵飽了世代台灣人，更是一項兼具歷史深度與庶民溫度的珍貴文化資產。</p>
+                    </div>
+
+                    <div class="pt-8 border-t border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-500 mb-4">七、 參考文獻來源</h3>
+                        <ol class="text-xs space-y-2 text-gray-500 list-decimal pl-4">
+                            <li>梁家嘉 (2017). 以台灣飲食文化資產觀點探討大腸蚵仔麵線之形塑.</li>
+                            <li>陳元朋 (2010). 從地方特色小吃看台灣飲食文化的變遷.</li>
+                            <li>曹銘宗 (2016). 蚵仔煎與炒米粉：台灣小吃的前世今生.</li>
+                            <li>盧訓等 (2003). 紅麵線之理化特性與加工.</li>
+                            <li>張月英 (2009). 添加不同澱粉對蚵仔麵線勾芡品質影響之研究.</li>
+                            <li>林雅文 (2014). 臺灣傳統麵糊類小吃感官品質研究.</li>
+                            <li>衛福部食藥署 (2020). 食品營養成分資料庫.</li>
+                            <li>王美玲 (2012). 市售蚵仔麵線中重金屬含量監測之初探.</li>
+                            <li>國家文化記憶庫 (2021). 蚵仔麵線：從港口到巷弄的庶民滋味.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area (as requested, centered theme exploration) -->
+    <div class="w-full py-16 bg-white border-t border-gray-100">
+        <div class="text-center px-4">
+            <div class="flex items-center justify-center gap-4 mb-4 opacity-50">
+                <div class="h-px w-12 bg-brand-dark"></div>
+                <span class="text-sm font-bold tracking-[0.5em] uppercase">END OF REPORT</span>
+                <div class="h-px w-12 bg-brand-dark"></div>
+            </div>
+            <p class="text-xl font-display">
+                【主題探索報告】by M11316116 謝同賀 @ <span class="italic text-brand-red font-black">NTUST</span>
+            </p>
+            <p class="text-sm text-gray-400 mt-2">學號：M11316116</p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('opacity-0');
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
